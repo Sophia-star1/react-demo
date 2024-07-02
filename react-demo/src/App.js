@@ -717,21 +717,46 @@
 
 // export default App;
 
-
-
-// import { useState } from 'react'
-
-// const [show, setShow] = useState(true)
+// import { useSelector, useDispatch } from "react-redux";
+// import { increment, decrement,addNumtoCount } from "./store/modules/counterStore";
 
 // function App() {
 
+//     // 通过useSelector获取状态这里的counter是在configureStore中定义的key对应的值
+//     const { count } = useSelector((state) => state.counter)
+//     const dispatch = useDispatch()
+
 //   return (
 //     <div>
-//       ...
+//         <button onClick={() => dispatch(increment)}>+</button>
+//         {count}
+//         <button onClick={() => dispatch(decrement)}>-</button>
+//         <button onClick={() => dispatch(addNumtoCount(5))}>+5</button>
 //     </div>
 //   );
 // }
 
 // export default App;
+
+import { useDispatch } from "react-redux";
+import { fetchChannels } from "./store/modules/channelStore";
+import { useEffect } from "react";
+
+
+function App() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchChannels())
+    }, [dispatch])
+    
+  return (
+    <div>
+      ...
+    </div>
+  );
+}
+
+export default App;
 
 
